@@ -1,9 +1,9 @@
 import styles from "./GridItem.module.scss";
 import { NavLink } from "react-router-dom";
 
-const GridItem = ({ image, imageAlt, name, price, id, fetching }) => {
+const GridItem = ({ image, imageAlt, name, price, id }) => {
 	return (
-		<NavLink fetching={fetching} to={`/products/${id}`}>
+		<NavLink to={`/products/${id}`}>
 			<article className={styles.item}>
 				<div className={styles.item_wrapper}>
 					<img src={image} alt={imageAlt}></img>

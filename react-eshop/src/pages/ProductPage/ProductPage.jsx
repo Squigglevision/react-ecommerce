@@ -6,7 +6,7 @@ import {
 } from "../../services/firestore-service";
 import styles from "./ProductPage.module.scss";
 
-const ProductPage = ({ fetching }) => {
+const ProductPage = () => {
 	const [car, setCar] = useState([]);
 	const [carSizes, setCarSizes] = useState([]);
 
@@ -67,13 +67,6 @@ const ProductPage = ({ fetching }) => {
 					{image3 && <img src={image3} />}
 				</div>
 			)}
-
-			{/* {car && (
-				<>
-					<h1>{car.name}</h1>
-				</>
-			)}
-			{error && <p>Could not find movie with Id: {id}</p>} */}
 		</main>
 	);
 };

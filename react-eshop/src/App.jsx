@@ -31,9 +31,7 @@ function App() {
 					<Route path="/" element={<HomePage data={data} />} />
 					<Route
 						path="/products/:id"
-						element={
-							<ProductPage data={data} fetching={fetching} />
-						}
+						element={<ProductPage data={data} />}
 					/>
 				</Routes>
 			</BrowserRouter>
