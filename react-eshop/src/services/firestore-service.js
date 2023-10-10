@@ -38,6 +38,20 @@ export const getProductById = async (id) => {
 	return { id: querySnapshot.id, ...querySnapshot.data() };
 };
 
+export const getCarsByReference = async (popReference) => {
+	const collectionRef = collection(db, "cars");
+	const q = query(collectionRef, where("popReference", "==", popReference));
+	const querySnapshot = await getDocs(q);
+	console.log(querySnapshot, "<< querySnapshot");
+
+	const filteredCars = querySnapshot.docs.map((doc) => ({
+		id: doc.id,
+		...doc.data(),
+	}));
+	console.log(filteredCars);
+	return filteredCars;
+};
+
 // export const getModels = async () => {
 // 	// Here I'm accessing all the data from the sub-collection, models, for both categories by getting the category ID in order to reference the collection:
 

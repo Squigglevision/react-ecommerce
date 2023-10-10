@@ -1,16 +1,22 @@
 import { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
-import { getProductById } from "../../services/firestore-service";
+import {
+	getCarsByReference,
+	getProductById,
+} from "../../services/firestore-service";
 import styles from "./ProductPage.module.scss";
 
-const ProductPage = ({ data, fetching }) => {
+const ProductPage = ({ fetching }) => {
 	const [car, setCar] = useState([]);
+	const [carSizes, setCarSizes] = useState([]);
+
 	const { id } = useParams();
 
 	const fetchCar = async () => {
 		const data = await getProductById(id);
+		const filteredCars = await getCarsByReference(data.popReference);
 		setCar(data || []);
-		console.log(car);
+		setCarSizes(filteredCars || []);
 	};
 
 	useEffect(() => {
@@ -46,11 +52,11 @@ const ProductPage = ({ data, fetching }) => {
 				</div>
 				<p>Model sizes:</p>
 				<div className={styles.flex_row}>
-					<NavLink to={`/products/${car.id}`}>
-						<button>1:64</button>
-					</NavLink>
-					<button>1:24</button>
-					<button>1:19</button>
+					{carSizes.map((car) => (
+						<NavLink key={car.id} to={`/products/${car.id}`}>
+							<button>{car.size}</button>
+						</NavLink>
+					))}
 				</div>
 			</div>
 

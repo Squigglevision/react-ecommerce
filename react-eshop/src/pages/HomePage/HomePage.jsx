@@ -24,7 +24,7 @@ const HomePage = () => {
 			<section className={styles.flex}>
 				<h2>Featured Products</h2>
 				<Carousel data={data} fetching={fetching} />
-				All products:
+				<h3 className={styles.space}>All products:</h3>
 				<div className={styles.grid}>
 					{data.map((car) => (
 						<GridItem
@@ -34,6 +34,7 @@ const HomePage = () => {
 							imageAlt={car.name}
 							name={car.name}
 							price={car.price}
+							fetching={fetching}
 						/>
 					))}
 				</div>
