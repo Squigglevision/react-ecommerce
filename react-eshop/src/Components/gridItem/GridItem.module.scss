@@ -1,0 +1,33 @@
+.item {
+	width: 250px;
+	height: 300px;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20px;
+	box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.1);
+	border: 2px solid white;
+
+	cursor: pointer;
+	@media screen and (max-width: 880px) {
+		width: 325px;
+	}
+
+	&_wrapper {
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		gap: 20px;
+		& > img {
+			width: 150px;
+		}
+		& > p {
+			margin-top: -5px;
+		}
+	}
+}
